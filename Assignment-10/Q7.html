@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word & Character Counter</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f2f5;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 600px;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      textarea {
+        width: 100%;
+        height: 200px;
+        padding: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        resize: none;
+        margin-bottom: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #2196f3;
+      }
+
+      .counter-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .counter {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .counter span {
+        font-weight: bold;
+        color: #2196f3;
+      }
+
+      .warning {
+        border-color: #ff4444 !important;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .counter-container {
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Word & Character Counter</h1>
+      <textarea id="textInput" placeholder="Start typing here..."></textarea>
+      <div class="counter-container">
+        <div class="counter">Characters: <span id="charCount">0</span>/200</div>
+        <div class="counter">Words: <span id="wordCount">0</span></div>
+      </div>
+    </div>
+
+    <script>
+      const textArea = document.getElementById("textInput");
+      const charCount = document.getElementById("charCount");
+      const wordCount = document.getElementById("wordCount");
+
+      textArea.addEventListener("input", function () {
+        const text = this.value;
+        const chars = text.length;
+        const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+
+        charCount.textContent = chars;
+        wordCount.textContent = words;
+
+        if (chars > 200) {
+          textArea.classList.add("warning");
+          alert(
+            "Character limit exceeded! Please keep your text under 200 characters."
+          );
+        } else {
+          textArea.classList.remove("warning");
+        }
+      });
+    </script>
+  </body>
+</html>

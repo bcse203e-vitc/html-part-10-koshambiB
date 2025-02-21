@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Order Form</title>
+    <link rel="stylesheet" href="Q3styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🍕 Pizza Order Form</h1>
+
+      <form id="pizzaForm">
+        <div class="section">
+          <h2>Select Pizza Size</h2>
+          <div class="size-options">
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="small"
+                name="size"
+                value="Small"
+                required
+              />
+              <label for="small">Small ($10)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="medium" name="size" value="Medium" />
+              <label for="medium">Medium ($12)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="large" name="size" value="Large" />
+              <label for="large">Large ($14)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Choose Toppings ($1 each)</h2>
+          <div class="toppings-grid">
+            <div class="checkbox-option">
+              <input
+                type="checkbox"
+                id="cheese"
+                name="toppings"
+                value="Cheese"
+              />
+              <label for="cheese">Extra Cheese</label>
+            </div>
+            <div class="checkbox-option">
+              <input
+                type="checkbox"
+                id="pepperoni"
+                name="toppings"
+                value="Pepperoni"
+              />
+              <label for="pepperoni">Pepperoni</label>
+            </div>
+            <div class="checkbox-option">
+              <input
+                type="checkbox"
+                id="mushrooms"
+                name="toppings"
+                value="Mushrooms"
+              />
+              <label for="olives">Olives</label>
+            </div>
+            <div class="checkbox-option">
+              <input
+                type="checkbox"
+                id="onions"
+                name="toppings"
+                value="Onions"
+              />
+              <label for="onions">Onions</label>
+            </div>
+            <div class="checkbox-option">
+              <input
+                type="checkbox"
+                id="bellPeppers"
+                name="toppings"
+                value="Bell Peppers"
+              />
+              <label for="bellPeppers">Bell Peppers</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Place Order</button>
+      </form>
+
+      <div id="orderSummary" class="order-summary hidden">
+        <h2>Order Summary</h2>
+        <div id="summaryContent"></div>
+        <button id="newOrderBtn" class="new-order-btn">New Order</button>
+      </div>
+    </div>
+    <script src="Q3script.js"></script>
+  </body>
+</html>

@@ -4,21 +4,20 @@ class NumberGuessingGame {
         this.attempts = 0;
         this.gameOver = false;
 
-        // DOM Elements
         this.guessInput = document.getElementById('guessInput');
         this.submitButton = document.getElementById('submitGuess');
         this.messageElement = document.getElementById('message');
         this.attemptsElement = document.getElementById('attempts');
         this.newGameButton = document.getElementById('newGame');
 
-        // Event Listeners
+ 
         this.submitButton.addEventListener('click', () => this.makeGuess());
         this.guessInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.makeGuess();
         });
         this.newGameButton.addEventListener('click', () => this.resetGame());
 
-        // Initialize input focus
+
         this.guessInput.focus();
     }
 
@@ -75,7 +74,7 @@ class NumberGuessingGame {
     }
 }
 
-// Start the game when the page loads
+
 window.onload = () => {
     new NumberGuessingGame();
 };

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country State Selector</title>
+    <style>
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      select {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <label for="country">Select Country:</label>
+        <select id="country">
+          <option value="">Select a country</option>
+          <option value="usa">USA</option>
+          <option value="india">India</option>
+          <option value="uk">UK</option>
+        </select>
+      </div>
+      <div>
+        <label for="state">Select State:</label>
+        <select id="state">
+          <option value="">Select a state</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      const countryStates = {
+        usa: ["California", "Texas", "New York", "Florida", "Carolina"],
+        india: [
+          "Maharashtra",
+          "Delhi",
+          "West Bengal",
+          "Kashmir",
+          "Karnataka",
+          "Tamil Nadu",
+          "Gujarat",
+        ],
+        uk: ["England", "Scotland", "Wales", "Northern Ireland"],
+      };
+
+      const countrySelect = document.getElementById("country");
+      const stateSelect = document.getElementById("state");
+
+      countrySelect.addEventListener("change", function () {
+        const country = this.value;
+        stateSelect.innerHTML = '<option value="">Select a state</option>';
+
+        if (country && countryStates[country]) {
+          countryStates[country].forEach((state) => {
+            const option = document.createElement("option");
+            option.value = state.toLowerCase();
+            option.textContent = state;
+            stateSelect.appendChild(option);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

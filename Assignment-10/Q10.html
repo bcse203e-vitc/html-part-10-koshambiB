@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <style>
+      .container {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        padding: 8px 15px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+      }
+      .remove-btn {
+        background-color: #ff4444;
+      }
+      .remove-btn:hover {
+        background-color: #cc0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input-group">
+        <input type="text" id="todoInput" placeholder="Enter a new task" />
+        <button id="addBtn">Add</button>
+      </div>
+      <div id="todoList"></div>
+    </div>
+    <script>
+      const todoInput = document.getElementById("todoInput");
+      const addBtn = document.getElementById("addBtn");
+      const todoList = document.getElementById("todoList");
+
+      addBtn.addEventListener("click", addTodo);
+      todoInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") addTodo();
+      });
+
+      function addTodo() {
+        const todoText = todoInput.value.trim();
+        if (todoText === "") return;
+
+        const todoItem = document.createElement("div");
+        todoItem.className = "todo-item";
+
+        const todoContent = document.createElement("span");
+        todoContent.textContent = todoText;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.className = "remove-btn";
+        removeBtn.addEventListener("click", function () {
+          todoList.removeChild(todoItem);
+        });
+
+        todoItem.appendChild(todoContent);
+        todoItem.appendChild(removeBtn);
+        todoList.appendChild(todoItem);
+
+        todoInput.value = "";
+      }
+    </script>
+  </body>
+</html>

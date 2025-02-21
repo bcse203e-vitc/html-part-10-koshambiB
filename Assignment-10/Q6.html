@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layered Image Gallery</title>
+    <style>
+      .gallery-container {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        margin: 50px auto;
+      }
+
+      .gallery-image {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 5px solid white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      #image1 {
+        left: 50px;
+        top: 50px;
+        z-index: 1;
+        transform: rotate(-5deg);
+      }
+
+      #image2 {
+        left: 150px;
+        top: 100px;
+        z-index: 2;
+        transform: rotate(3deg);
+      }
+
+      #image3 {
+        left: 250px;
+        top: 150px;
+        z-index: 3;
+        transform: rotate(-2deg);
+      }
+
+      .gallery-image:hover {
+        transform: scale(1.05) rotate(0deg) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery-container">
+      <img
+        src="https://picsum.photos/300/200?random=1"
+        alt="Image 1"
+        class="gallery-image"
+        id="image1"
+      />
+      <img
+        src="https://picsum.photos/300/200?random=2"
+        alt="Image 2"
+        class="gallery-image"
+        id="image2"
+      />
+      <img
+        src="https://picsum.photos/300/200?random=3"
+        alt="Image 3"
+        class="gallery-image"
+        id="image3"
+      />
+    </div>
+
+    <script>
+      const images = document.querySelectorAll(".gallery-image");
+      let topZIndex = 3;
+
+      images.forEach((image) => {
+        image.addEventListener("click", function () {
+          topZIndex++;
+          this.style.zIndex = topZIndex;
+        });
+      });
+    </script>
+  </body>
+</html>
